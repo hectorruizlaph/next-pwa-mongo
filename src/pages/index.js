@@ -62,7 +62,7 @@ export default function Home({tasks}) {
 }
 
 export const getServerSideProps = async (ctx) => {
-  const res = await fetch('http://localhost:3000/api/tasks')
+  const res = await fetch('https://next-pwa-mongo.vercel.app/api/tasks')
   const tasks = await res.json()
   console.log(tasks)
 

@@ -23,7 +23,9 @@ const TaskFormPage = () => {
   const [errors, setErrors] = useState({})
 
   const getTask = async () => {
-    const res = await fetch('http://localhost:3000/api/tasks/' + query.id)
+    const res = await fetch(
+      'https://next-pwa-mongo.vercel.app/api/tasks/' + query.id
+    )
     const data = await res.json()
     setNewTask({title: data.title, description: data.description})
   }
@@ -67,7 +69,7 @@ const TaskFormPage = () => {
 
   const createTask = async () => {
     try {
-      await fetch('http://localhost:3000/api/tasks', {
+      await fetch('https://next-pwa-mongo.vercel.app/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +83,7 @@ const TaskFormPage = () => {
 
   const updateTask = async () => {
     try {
-      await fetch('http://localhost:3000/api/tasks/' + query.id, {
+      await fetch('https://next-pwa-mongo.vercel.app/api/tasks/' + query.id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
