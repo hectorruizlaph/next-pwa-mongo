@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import {dbConnect} from 'utils/mongoose'
+import dbConnect from 'utils/mongoose'
 import Task from 'models/Task'
 
 dbConnect()

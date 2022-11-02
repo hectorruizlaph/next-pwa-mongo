@@ -1,4 +1,4 @@
-import {dbConnect} from 'utils/mongoose'
+import dbConnect from 'utils/mongoose'
 import Task from 'models/Task'
 
 dbConnect()
