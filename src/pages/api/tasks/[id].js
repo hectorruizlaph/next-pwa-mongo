@@ -1,46 +1,46 @@
 /* eslint-disable import/no-anonymous-default-export */
-import {dbConnect} from 'utils/mongoose';
-import Task from 'models/Task';
+import {dbConnect} from 'utils/mongoose'
+import Task from 'models/Task'
 
-dbConnect();
+dbConnect()
 
 export default async (req, res) => {
   const {
     method,
     body,
     query: {id},
-  } = req;
+  } = req
 
   switch (method) {
     case 'GET':
       try {
-        const task = await Task.findById(id);
-        if (!task) return res.status(404).json({msg: 'task not found'});
-        return res.status(200).json(task);
+        const task = await Task.findById(id)
+        if (!task) return res.status(404).json({msg: 'task not found'})
+        return res.status(200).json(task)
       } catch (error) {
-        return res.status(500).json({msg: error.message});
+        return res.status(500).json({msg: error.message})
       }
 
     case 'PUT':
       try {
         const task = await Task.findByIdAndUpdate(id, body, {
           new: true,
-        });
-        if (!task) return res.status(404).json({msg: 'task not found'});
-        return res.status(200).json(task);
+        })
+        if (!task) return res.status(404).json({msg: 'task not found'})
+        return res.status(200).json(task)
       } catch (error) {
-        return res.status(500).json({msg: error.message});
+        return res.status(500).json({msg: error.message})
       }
     case 'DELETE':
       try {
-        const deletedTask = await Task.findByIdAndDelete(id);
-        if (!deletedTask) return res.status(404).json({msg: 'task not found'});
-        return res.status(204).json(deletedTask);
+        const deletedTask = await Task.findByIdAndDelete(id)
+        if (!deletedTask) return res.status(404).json({msg: 'task not found'})
+        return res.status(204).json(deletedTask)
       } catch (error) {
-        return res.status(500).json({msg: error.message});
+        return res.status(500).json({msg: error.message})
       }
 
     default:
-      return res.status(400).json({msg: 'method not available'});
+      return res.status(400).json({msg: 'method not available'})
   }
-};
+}
